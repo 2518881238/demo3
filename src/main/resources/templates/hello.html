@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>菜宝</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            font-size:63%;
+            color:#000;
+        }
+
+        .input_on{
+            padding:2px 8px 0pt 3px;
+            height:18px;
+            border:1px solid #999;
+            background-color:#FFFFCC;
+        }
+        .input_off{
+            padding:2px 8px 0pt 3px;
+            height:18px;
+            border:1px solid #CCC;
+            background-color:#FFF;
+        }
+        .input_move{
+            padding:2px 8px 0pt 3px;
+            height:18px;
+            border:1px solid #999;
+            background-color:#FFFFCC;
+        }
+        .input_out{
+
+            padding:2px 8px 0pt 3px;
+            height:18px;
+            border:1px solid #CCC;
+            background-color:#FFF;
+        }
+
+        ul.input_test{
+            margin:20px auto 0 auto;
+            width:500px;
+            list-style-type:none;
+        }
+        ul.input_test li{
+            width:500px;
+            height:22px;
+            margin-bottom:10px;
+        }
+        .input_test label{
+            float:left;
+            padding-right:10px;
+            width:100px;
+            line-height:22px;
+            text-align:right;
+            font-size:1.4em;
+        }
+        .input_test p{
+            float:left;
+            _margin-top:-1px;
+        }
+        .input_test span{
+            float:left;
+            padding-left:10px;
+            line-height:22px;
+            text-align:left;
+            font-size:1.2em;
+            color:#999;
+        }
+        .all_list_brands_title_details_btn{
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.428571429;
+            border-radius: 30px;
+            margin-top: 60px;
+            margin-left: 60px;
+            float:left;
+            background-color: green;
+            border: 1px solid #d5d5d5;
+        }
+    </style>
+</head>
+<body>
+<form >
+<ul class="input_test">
+    <li>
+        <label for="inp_name">买菜价格：</label>
+        <p><input id="inp_name" class="input_out" name="" type="text" οnfοcus="this.className='input_on';this.οnmοuseοut=''" οnblur="this.className='input_off';this.οnmοuseοut=function(){this.className='input_out'};" οnmοusemοve="this.className='input_move'" οnmοuseοut="this.className='input_out'" /></p>
+        <span>请输入您的买菜价格</span>
+    </li>
+    <li>
+        <label for="inp_email">买菜备注：</label>
+        <p><input id="inp_email" class="input_out" name="" type="text" οnfοcus="this.className='input_on';this.οnmοuseοut=''" οnblur="this.className='input_off';this.οnmοuseοut=function(){this.className='input_out'};" οnmοusemοve="this.className='input_move'" οnmοuseοut="this.className='input_out'" /></p>
+        <span>请输入您买菜备注</span>
+    </li>
+    <li>
+        <p><input class="all_list_brands_title_details_btn" id="brands_button" type="submit"></input></p>
+
+    </li>
+</ul>
+</form>
+</body>
+</html>

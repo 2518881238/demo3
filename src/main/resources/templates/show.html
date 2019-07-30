@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        table td, table th {
+            border: 1px solid #cad9ea;
+            color: #666;
+            height: 30px;
+        }
+
+        table thead th {
+            background-color: #CCE8EB;
+            width: 100px;
+        }
+
+        table tr:nth-child(odd) {
+            background: #fff;
+        }
+
+        table tr:nth-child(even) {
+            background: #F5FAFA;
+        }
+    </style>
+</head>
+
+<body>
+<form action="check.php" method="post">
+    你是？金彪
+    买菜价钱是？<input type="text" name="user">
+    备注是？<input type="text" name="user">
+    <input type="submit" value="提交">
+</form>
+<br><br>
+<form action="check.php" method="post">
+    你是？王浪
+    买菜价钱是？<input type="text" name="user">
+    备注是？<input type="text" name="user">
+    <input type="submit" value="提交">
+</form>
+<br><br>
+<form action="check.php" method="post">
+    你是？朱宏
+    买菜价钱是？<input type="text" name="user">
+    备注是？<input type="text" name="user">
+    <input type="submit" value="提交">
+</form>
+<br><br>
+<a style="color: red;">小提示：写错了就是自己吃亏哦，写错了请联系后台管理员从数据库直接删除</a>
+<div align="center">
+    <table width="70%" class="table">
+        <caption>
+            <h2>菜宝买菜统总计</h2>
+        </caption>
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>总价</th>
+            <th>差价</th>
+        </tr>
+        </thead>
+        <tr>
+            <td th:text="朱宏"></td>
+            <td th:text="${zhuhong}"></td>
+            <td th:text="${zhuhong1}"></td>
+
+        </tr>
+        <tr>
+            <td th:text="金彪"></td>
+            <td th:text="${jinbiao}"></td>
+            <td th:text="${jinbiao1}"></td>
+
+        </tr>
+        <tr>
+            <td th:text="王浪"></td>
+            <td th:text="${wanglang}"></td>
+            <td th:text="${wanglang1}"></td>
+        </tr>
+    </table>
+
+</div>
+
+<div align="center">
+    <table width="70%" class="table">
+        <caption>
+            <h2>菜宝买菜统计展示区</h2>
+        </caption>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>菜价</th>
+            <th>备注</th>
+            <th>日期</th>
+        </tr>
+        </thead>
+        <tr th:each="buyfood:${pageInfo.list}">
+            <td th:text="${buyfood.id}"></td>
+            <td th:text="${buyfood.user_name}"></td>
+            <td th:text="${buyfood.price}"></td>
+            <td th:text="${buyfood.re_mark}"></td>
+            <td th:text="${buyfood.date}"></td>
+        </tr>
+    </table>
+    <p>当前 <span th:text="${pageInfo.pageNum}"></span> 页,总 <span th:text="${pageInfo.pages}"></span> 页,共 <span th:text="${pageInfo.total}"></span> 条记录</p>
+    <a th:href="@{/page}">首页</a>
+    <a th:href="@{/page(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}">上一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}">下一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo.pages})}">尾页</a>
+</div>
+<div align="center">
+    <table width="70%" class="table">
+        <caption>
+            <h2>菜宝买菜个人展示区</h2>
+        </caption>
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>菜价</th>
+            <th>备注</th>
+            <th>日期</th>
+        </tr>
+        </thead>
+        <tr th:each="buyfood:${pageInfo1.list}">
+            <td th:text="${buyfood.id}"></td>
+            <td th:text="${buyfood.user_name}"></td>
+            <td th:text="${buyfood.price}"></td>
+            <td th:text="${buyfood.re_mark}"></td>
+            <td th:text="${buyfood.date}"></td>
+        </tr>
+    </table>
+    <p>当前 <span th:text="${pageInfo1.pageNum}"></span> 页,总 <span th:text="${pageInfo1.pages}"></span> 页,共 <span th:text="${pageInfo1.total}"></span> 条记录</p>
+    <a th:href="@{/page}">首页</a>
+    <a th:href="@{/page(pageNum=${pageInfo1.hasPreviousPage}?${pageInfo1.prePage}:1)}">上一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo1.hasNextPage}?${pageInfo1.nextPage}:${pageInfo1.pages})}">下一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo1.pages})}">尾页</a>
+</div>
+<div align="center">
+    <table width="70%" class="table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>菜价</th>
+            <th>备注</th>
+            <th>日期</th>
+        </tr>
+        </thead>
+        <tr th:each="buyfood:${pageInfo2.list}">
+            <td th:text="${buyfood.id}"></td>
+            <td th:text="${buyfood.user_name}"></td>
+            <td th:text="${buyfood.price}"></td>
+            <td th:text="${buyfood.re_mark}"></td>
+            <td th:text="${buyfood.date}"></td>
+        </tr>
+    </table>
+    <p>当前 <span th:text="${pageInfo2.pageNum}"></span> 页,总 <span th:text="${pageInfo2.pages}"></span> 页,共 <span th:text="${pageInfo2.total}"></span> 条记录</p>
+    <a th:href="@{/page}">首页</a>
+    <a th:href="@{/page(pageNum=${pageInfo2.hasPreviousPage}?${pageInfo2.prePage}:1)}">上一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo2.hasNextPage}?${pageInfo2.nextPage}:${pageInfo2.pages})}">下一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo2.pages})}">尾页</a>
+</div>
+<div align="center">
+    <table width="70%" class="table">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>用户名</th>
+            <th>菜价</th>
+            <th>备注</th>
+            <th>日期</th>
+        </tr>
+        </thead>
+        <tr th:each="buyfood:${pageInfo3.list}">
+            <td th:text="${buyfood.id}"></td>
+            <td th:text="${buyfood.user_name}"></td>
+            <td th:text="${buyfood.price}"></td>
+            <td th:text="${buyfood.re_mark}"></td>
+            <td th:text="${buyfood.date}"></td>
+        </tr>
+    </table>
+    <p>当前 <span th:text="${pageInfo3.pageNum}"></span> 页,总 <span th:text="${pageInfo3.pages}"></span> 页,共 <span th:text="${pageInfo3.total}"></span> 条记录</p>
+    <a th:href="@{/page}">首页</a>
+    <a th:href="@{/page(pageNum=${pageInfo3.hasPreviousPage}?${pageInfo3.prePage}:1)}">上一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo3.hasNextPage}?${pageInfo3.nextPage}:${pageInfo3.pages})}">下一页</a>
+    <a th:href="@{/page(pageNum=${pageInfo3.pages})}">尾页</a>
+</div>
+</body>
+</html>
