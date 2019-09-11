@@ -1,23 +1,34 @@
 package com.example.demo3.service;
 
+import com.example.demo3.dao.StuDao;
 import com.example.demo3.entity.BuyFood;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
-@Mapper
-public interface StuService {
+@Service
+public class StuService{
 
-    @Select("select * from buy_food")
-    List<BuyFood> findAll();
+    @Resource
+    private StuDao studao;
 
-    @Select("select * from buy_food where user_name = '朱宏'")
-    List<BuyFood> findAllByZhuHong();
+    public List<BuyFood> findAll(){
+        return studao.findAllByIdd();
+    }
 
-    @Select("select * from buy_food where user_name = '金彪'")
-    List<BuyFood> findAllByJinBiao();
+    public boolean saveAll(BuyFood buyFood) {
+        try{
+            studao.save(buyFood);
+            return true;
+        } catch (Exception e){
+            e.getMessage();
+            return false;
+        }
+    }
+    public List<BuyFood> searchAllByName(String name) {
+        return studao.findAllByUserName(name);
+    }
 
-    @Select("select * from buy_food where user_name = '王浪'")
-    List<BuyFood> findAllByWangLang();
 }

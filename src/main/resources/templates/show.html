@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+
     <style type="text/css">
         table {
             border-collapse: collapse;
@@ -32,28 +36,37 @@
 </head>
 
 <body>
-<form action="check.php" method="post">
-    你是？金彪
-    买菜价钱是？<input type="text" name="user">
-    备注是？<input type="text" name="user">
+<div id="app">
+    <h1 style="display:flex; justify-content:center">hello？哥们，你是？</h1>
+    <br><br>
+    <div style="display: flex;justify-content:space-around;">
+    <i-button @click="show" type="primary" shape="circle">朱宏</i-button>
+    <i-button type="primary" shape="circle">王浪</i-button>
+    <i-button type="primary" shape="circle">金彪</i-button>
+    </div>
+    <Modal v-model="visible" title="Welcome"></Modal>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            visible: false
+        },
+        methods: {
+            show: function () {
+                this.visible = true;
+            }
+        }
+    })
+</script>
+<form action="/demo3/postPrice" method="post">
+    你是？<input type="text" name="user"><br>
+    买菜价钱是？<input type="text" name="price"><br>
+    备注是？<input type="text" name="remark">
     <input type="submit" value="提交">
 </form>
 <br><br>
-<form action="check.php" method="post">
-    你是？王浪
-    买菜价钱是？<input type="text" name="user">
-    备注是？<input type="text" name="user">
-    <input type="submit" value="提交">
-</form>
-<br><br>
-<form action="check.php" method="post">
-    你是？朱宏
-    买菜价钱是？<input type="text" name="user">
-    备注是？<input type="text" name="user">
-    <input type="submit" value="提交">
-</form>
-<br><br>
-<a style="color: red;">小提示：写错了就是自己吃亏哦，写错了请联系后台管理员从数据库直接删除</a>
 <div align="center">
     <table width="70%" class="table">
         <caption>

@@ -1,12 +1,17 @@
 package com.example.demo3.dao;
 
 import com.example.demo3.entity.BuyFood;
-import com.example.demo3.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.Query;
 
-@Component
+import java.util.List;
+
 public interface StuDao extends JpaRepository<BuyFood, Long> {
 
+    @Query("select p from BuyFood p")
+    List<BuyFood> findAllByIdd();
+
+    @Query("select p from BuyFood p where p.user_name = :userName")
+    List<BuyFood> findAllByUserName(String userName);
 
 }

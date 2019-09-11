@@ -12,10 +12,8 @@ spring:
     hibernate:
       ddl-auto: update  # 第一次建表create  后面用update，要不然每次重启都会新建表
     show-sql: true
-  thymeleaf:
-    cache: false
 server:
-  port: 8081
+  port: 8089
 
 #分页插件
 pagehelper:
@@ -23,3 +21,5 @@ pagehelper:
   params: count=countSql
   reasonable: true
   support-methods-arguments: true
+
+
