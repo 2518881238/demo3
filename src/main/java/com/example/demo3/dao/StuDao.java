@@ -13,5 +13,4 @@ public interface StuDao extends JpaRepository<BuyFood, Long> {
 
     @Query("select p from BuyFood p where p.user_name = :userName")
     List<BuyFood> findAllByUserName(String userName);
-
 }
